@@ -99,6 +99,7 @@ const onTicketTypeDelete = (index:  number) => {
           ))}
         </div>
       )}
+      
       <Button 
       className='mt-10'
       onClick={onAddTicketType}>Add Ticket Type
@@ -106,9 +107,10 @@ const onTicketTypeDelete = (index:  number) => {
       <div className="flex justify-center gap-5">
       <Button onClick={() => setActiveStep(activeStep - 1)}>Back</Button>
       <Button type="submit" color='primary'
-      isDisabled={event?.ticketTypes?.length === 0}
-      isLoading={loading}
-      >Submit
+        isDisabled={event?.ticketTypes?.length === 0}
+        isLoading={loading}
+      >
+        Submit
       </Button>
      </div>
     </div>

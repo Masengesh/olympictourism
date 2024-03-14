@@ -39,12 +39,12 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
     },
     {
       title : "Bookings",
-      path : "/user/bookings",
+      path : "/bookings",
     },
   ];
 
   const pathname = usePathname();
-  console.log("pathname", pathname);
+  //console.log("pathname", pathname);
   const router = useRouter();
 const [menusToShow, setMenusToShow] = React.useState<any[]>([]);
 const isPrivateRoute = !["/sign-in", "/sign-up"].includes(pathname);

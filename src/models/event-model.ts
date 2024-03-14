@@ -11,15 +11,16 @@ const eventSchema = new mongoose.Schema(
         type : String,
         required : true,
     },
-    
+
     organizer: {
         type : String,
         required : true,
     },
     guests: {
-        type : String,
+        type : Array,
         required : true,
     },
+
     location: {
         type : String,
         required : true,
@@ -33,11 +34,11 @@ const eventSchema = new mongoose.Schema(
         required : true,
     },
     images: {
-        type : String,
+        type : Array,
         required : true,
     },
     ticketTypes: {
-        type : String,
+        type : Array,
         required : true,
     },
     user: {

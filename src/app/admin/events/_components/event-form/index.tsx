@@ -7,7 +7,7 @@ import Media from './Media';
 import Tickets from './Tickets';
 import { uploadImagesToFirebaseAndGetUrls } from '@/helpers/image-upload';
 import toast from 'react-hot-toast';
-import axios from 'axios'
+import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
 function EventForm() {
@@ -20,18 +20,16 @@ function EventForm() {
         try {
             setLoading(true);
             e.preventDefault();
-            event.images = await uploadImagesToFirebaseAndGetUrls(newlySelectedImages.map((image: any) => 
-            image.file)
-            );
+            event.images = await uploadImagesToFirebaseAndGetUrls(newlySelectedImages.map((image: any) => image.file));
             await axios.post("/api/admin/events", event);
             toast.success("Event created successfully");
             router.refresh();
-            router.push("/admin/events");
+            router.push("admin/events");
         } catch (error: any) {
             toast.error(error.message);
         } finally {
-            setLoading(false)
-        };
+            setLoading(false);
+        }
     };
     const commonProps = {
         event,

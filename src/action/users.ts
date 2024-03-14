@@ -1,7 +1,6 @@
 import { connectDB } from "@/config/dbConfig";
 import UserModel from "@/models/user-model";
 import { currentUser } from "@clerk/nextjs/server";
-import mongoose from "mongoose";
 connectDB();
 
 export const handleNewUserRegistration = async () => {
