@@ -8,6 +8,9 @@ export interface EventFormStepProps {
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
   newlySelectedImages: any[];
   setNewlySelectedImages: React.Dispatch<React.SetStateAction<any[]>>;
+
+  alreadyUploadedImages: string[];
+  setAlreadyUploadedImages: React.Dispatch<React.SetStateAction<string[]>>;
   loading : boolean;
 }
 

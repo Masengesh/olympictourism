@@ -4,8 +4,9 @@ import EventModel from '@/models/event-model'
 import { Link } from '@nextui-org/react'
 import React from 'react'
 import EventsTable from './_components/events-table'
+import { connectDB } from '@/config/dbConfig'
 
-
+connectDB();
 
 async function Eventspage() {
   
