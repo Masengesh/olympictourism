@@ -29,6 +29,7 @@ export interface BookingType {
     ticketsCount: Number;
     totalAmount: Number;
     paymentId: String;
+    status: String;
     user: any;
     _id: string;
     createdAt: string;

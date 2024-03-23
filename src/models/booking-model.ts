@@ -26,6 +26,11 @@ const bookingSchema = new mongoose.Schema(
             type: Number,
             required: true,
         },
+        status: {
+            type: String,
+            required: true,
+            default: "booked"
+        }
     },
     { timestamps: true }
 );
