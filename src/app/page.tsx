@@ -53,13 +53,13 @@ export default async function Home({ searchParams }: Props) {
       <div className="flex flex-col gap-5">
         {events.map((event) => (
           <div key={event._id} 
-          className="grid grid-cols-3 bg-white rounded-sm gap-10 border">
+          className="grid grid-cols-1 md:grid-cols-3 bg-white rounded-sm md:gap-10 border">
             <div className="col-span-1">
               <img src={event.images[0]}
                 alt="picture of the event"
                 height={100}
                 width={200}
-                className=" object-cover rounded-1-sm"
+                className="w-full object-cover rounded-1-sm"
               />
             </div>
             <div className="col-span-2 flex flex-col gap-5 justify-between p-5">

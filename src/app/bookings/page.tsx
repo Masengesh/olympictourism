@@ -31,9 +31,9 @@ async function BookingsPage() {
       {bookedEvents.map((booking) => {
         return (
         <div key={booking._id} className='border border-gray-300 bg-gray-100 flex flex-col gap-5'>
-          <div className="bg-gray-700 p-3 text-white">
-            <h1 className="text-2xl font-semibold">{booking.event.name}</h1>
-            <div className="text-sm flex gap-10 text-gray-200">
+          <div className="bg-gray-700 p-3 text-white flex md:flex-row flex-col justify-between md:items-center">
+            <h1 className="md:text-2xl text-xl font-semibold">{booking.event.name}</h1>
+            <div className="text-sm flex md:flex-row flex-col gap-5 md:gap-10 text-gray-200">
               <h1>
                 <i className="ri-map-pin-line pr-2"></i> {booking.event.location}
               </h1>
@@ -42,7 +42,7 @@ async function BookingsPage() {
               </h1>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-5 p-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 p-3">
             {getProperty({ key: "Booking Id", value: booking._id})}
             {getProperty({ key: "Ticket Type", value: booking.ticketType })}
             {getProperty({

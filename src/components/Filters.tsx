@@ -20,7 +20,7 @@ function Filters() {
         router.push(`/?name=${filters.name}&date=${filters.date}`);
     }, [filters.date]);
   return (
-    <div className='bg-white p-5 rounded-sm mb-5 flex gap-5 items-end'>
+    <div className='bg-white p-5 rounded-sm mb-5 flex flex-col md:flex-row gap-5 items-end'>
         <div className='w-full'>
           <h1 className="text-sm text-gray-500">Search an event by name</h1>
         <input 

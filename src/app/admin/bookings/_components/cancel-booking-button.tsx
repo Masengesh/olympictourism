@@ -26,7 +26,7 @@ function CancelBookingBtn({ booking }: { booking: BookingType }) {
     }
   };
   return (
-    <div className='p-3'>
+    <div className='p-3 flex justify-end w-full'>
         <Button color='danger' isLoading={loading} onClick={cancelBooking}>CancelBookingBtn</Button>
     </div>
   );

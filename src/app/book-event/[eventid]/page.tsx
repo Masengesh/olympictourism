@@ -54,7 +54,7 @@ async function BookEventPage({ params } : Props) {
         {event.description}
       </p>
 
-      <div className="mt-7 bg-gray-100 border-gray-200 p-3 rounded-sm grid grid-cols-3 gap-5">
+      <div className="mt-7 bg-gray-100 border-gray-200 p-3 rounded-sm grid grid-cols-1 md:grid-cols-3 gap-5">
         {getEventProperty("organizer")}
         {getEventProperty("location")}
         {getEventProperty("date")}

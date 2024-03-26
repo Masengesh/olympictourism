@@ -20,8 +20,12 @@ async function EventReportPage({ params }: Props) {
     eventBookings.forEach((booking) => {
         ticketTypesAndTheirRevenue[booking.ticketType] = {
             ticketsSold: ticketTypesAndTheirRevenue[booking.ticketType]
-                ? ticketTypesAndTheirRevenue[booking.ticketType] + booking.ticketsCount
-                : booking.totalAmount,
+              ? ticketTypesAndTheirRevenue[booking.ticketType] + booking.ticketsCount
+              : booking.ticketsCount,
+
+          revenue: ticketTypesAndTheirRevenue[booking.ticketType]
+            ? ticketTypesAndTheirRevenue[booking.ticketType] + booking.totalAmount
+            : booking.totalAmount,
         };
     });
 
@@ -37,8 +41,8 @@ async function EventReportPage({ params }: Props) {
   return (
     <div>
         <div className="bg-gray-700 p-5 text-white flex flex-col gap-3">
-        <h1 className="text-3xl font-semibold">{event.name} - Reports</h1>
-        <div className="text-sm flex gap-10 text-gray-200">
+        <h1 className="md:text-3xl text-xl font-semibold">{event.name} - Reports</h1>
+        <div className="text-sm flex md:flex-row flex-col gap-3 md:gap-10 text-gray-200">
           <h1>
             <i className="ri-map-pin-line pr-2"></i> {event.location}
           </h1>
@@ -49,7 +53,7 @@ async function EventReportPage({ params }: Props) {
       </div>
 
       <h1 className='text-2xl font-semibold mt-5'>Ticket Types and Their Revenues</h1>
-      <div className="grid grid-cols-4 mt-5 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-4 mt-5 gap-5">
       {Object.keys(ticketTypesAndTheirRevenue).map((ticketType) => (
         <div className="p-3 bg-white rounded-sm shadow border">
           <h1 className='font-semibold text-lg'>{ticketType}</h1>
