@@ -47,6 +47,28 @@ async function EventReportPage({ params }: Props) {
           </h1>
         </div>
       </div>
+
+      <h1 className='text-2xl font-semibold mt-5'>Ticket Types and Their Revenues</h1>
+      <div className="grid grid-cols-4 mt-5 gap-5">
+      {Object.keys(ticketTypesAndTheirRevenue).map((ticketType) => (
+        <div className="p-3 bg-white rounded-sm shadow border">
+          <h1 className='font-semibold text-lg'>{ticketType}</h1>
+          <div className="flex flex-col gap-1 mt-2 font-semibold">
+            <span className='text-sm text-gray-600 flex justify-between items-center'>
+              Tickets Sold{" "} <b>{ticketTypesAndTheirRevenue[ticketType].ticketsSold}</b>
+            </span>
+            <span className='text-sm text-gray-600 flex justify-between items-center'>
+              Revenue{" "} <b>$ {ticketTypesAndTheirRevenue[ticketType].revenue}</b>
+            </span>
+          </div>
+        </div>
+      ))}
+      </div>
+
+      <div className="mt-5 bg-white rounded p-5 flex justify-between">
+        <h1 className="text-2xl font-semibold">Total Revenue</h1>
+        <h1 className="text-3xl font-semibold">${totalRevenue}</h1>
+      </div>
     </div>
   )
 }

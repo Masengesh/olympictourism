@@ -10,7 +10,7 @@ export const handleNewUserRegistration = async () => {
         //check if user is arleadyregistered
         const userExists = await UserModel.findOne({
             clerkUserId: loggedInUser?.id
-        }, { timeout: 30000 });
+        }, { timeout: 5000 });
         if (userExists) return userExists;
 
         //create a new user

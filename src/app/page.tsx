@@ -6,21 +6,50 @@ import {
 } from "@/action/users";
 import EventModel from "@/models/event-model";
 import { EventType } from "@/interfaces/events";
-import Image from "next/image";
 import Link from "next/link";
+import Filters from "@/components/Filters";
+import { flushAllTraces } from "next/dist/trace";
     
 connectDB();
 
-export default async function Home() {
-  await handleNewUserRegistration()
+interface Props {
+  searchParams: {
+    name: string;
+    date: string;
+  };
+}
 
-  const mongoUserId = await getMongoDBUserIDOfLoggedInUser();
+export default async function Home({ searchParams }: Props) {
+ 
+  await handleNewUserRegistration();
+
+  await getMongoDBUserIDOfLoggedInUser();
+
+  //const mongoUserId = 
+
+  let filters = {};
+  if(searchParams.name) {
+    filters = {
+      name: {
+        $regex: searchParams.name,
+        $options: "i",
+      },
+    };
+  }
+
+  if(searchParams.date) {
+    filters = {
+      ...filters,
+      date: searchParams.date,
+    };
+  }
   
-  const events: EventType[] =  await EventModel.find({}).sort({
+  const events: EventType[] =  (await EventModel.find(filters).sort({
     createdAt: -1,
-  }) as any;
+  })) as any;
   return (
     <div>
+      <Filters />
       <div className="flex flex-col gap-5">
         {events.map((event) => (
           <div key={event._id} 
@@ -56,6 +85,14 @@ export default async function Home() {
           </div>
         ))}
       </div>
+
+      {events.length === 0 && (
+        <div className="w-full mt-100 flex justify-center">
+          <h1 className="text-sm ">
+            No events found for your search
+          </h1>
+        </div>
+      )}
     </div>
   );
 }
