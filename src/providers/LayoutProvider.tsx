@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import { Router } from 'next/router';
 
 function LayoutProvider({ children }: { children: React.ReactNode }) {
-
+const [isAdmin , setIsAdmin] = React.useState(false)
   const menusForAdmin = [
     {
       title : "Home",
@@ -54,7 +54,7 @@ const getUserData = async () => {
     if(response.data.user.isAdmin) {
 
         setMenusToShow(menusForAdmin);
-      
+        setIsAdmin(true)
     }else{
       setMenusToShow(menusForUser);
     }
@@ -68,6 +68,12 @@ useEffect(() => {
     getUserData();
   }
 }, []);
+
+useEffect(() => {
+  if(isAdmin && pathname.includes("/admin")) {
+    router.push("/");
+  }
+}, [pathname]);
 
 
   return (
