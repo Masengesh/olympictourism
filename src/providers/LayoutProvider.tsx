@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import { Router } from 'next/router';
 
 function LayoutProvider({ children }: { children: React.ReactNode }) {
-const [isAdmin , setIsAdmin] = React.useState(false)
+//const [isAdmin , setIsAdmin] = React.useState(false)
   const menusForAdmin = [
     {
       title : "Home",
@@ -54,7 +54,7 @@ const getUserData = async () => {
     if(response.data.user.isAdmin) {
 
         setMenusToShow(menusForAdmin);
-        setIsAdmin(true)
+        //setIsAdmin(true)
     }else{
       setMenusToShow(menusForUser);
     }
@@ -69,11 +69,11 @@ useEffect(() => {
   }
 }, []);
 
-useEffect(() => {
+{/*useEffect(() => {
   if(isAdmin && pathname.includes("/admin")) {
     router.push("/");
   }
-}, [pathname]);
+}, [pathname]);*/}
 
 
   return (
@@ -81,7 +81,7 @@ useEffect(() => {
     {isPrivateRoute && <div className='bg-white flex justify-between items-center shadow p-3 py-5'>
       <h1 className="font-semibold text-2xl cursor-pointer text-blue-800"
       onClick={() => router.push("/")}
-      >makeda events</h1>
+      >Karibu events</h1>
       <div className='flex gap-5 items-center'>
       <Dropdown
       size="sm"
